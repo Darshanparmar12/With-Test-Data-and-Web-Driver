@@ -2,23 +2,21 @@ package org.example;
 
 import org.openqa.selenium.By;
 
+import static java.lang.Math.random;
+
 public class RegisterPage extends Utils {
 
-    //to call test data in this method.
-    LoadProp loadProp = new LoadProp();
-
-
+    //to generate random email each time we run the test
+    static String email = "Don" + random() + "@gmail.com";
 
     //enter registration details
     public void enterRegistrationDetails() {
 
-        typeIn(By.id("FirstName"), loadProp.getProperty("firstName"));
-        typeIn(By.id("LastName"), loadProp.getProperty("lastName"));
-        typeIn(By.id("Email"), loadProp.getProperty("emailA"));
-        typeIn(By.id("Email"), randomDate()); // to have random date in between to make sure uniqueness.
-        typeIn(By.id("Email"), loadProp.getProperty("emailB"));
-        typeIn(By.name("Password"), loadProp.getProperty("password"));
-        typeIn(By.name("ConfirmPassword"), loadProp.getProperty("confirmPassword"));
+        typeIn(By.id("FirstName"), "TestFirst");
+        typeIn(By.id("LastName"), "TestLast");
+        typeIn(By.id("Email"), email);
+        typeIn(By.name("Password"), "test1234");
+        typeIn(By.name("ConfirmPassword"), "test1234");
         clickOnElement(By.id("register-button"));
     }
 }
