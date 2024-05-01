@@ -12,7 +12,7 @@ public class TestSuite extends BaseTest {
 
     BuildYourOwnSelection buildYourOwnSelection = new BuildYourOwnSelection();
 
-
+    EmailAFriend emailAFriend = new EmailAFriend();
     RegisterResultPage registerResultPage = new RegisterResultPage();
 
     ReferAFriendProducts referAFriend = new ReferAFriendProducts();
@@ -32,17 +32,19 @@ public class TestSuite extends BaseTest {
 
     @Test
     public void verifyRegisteredUserShouldLogin() {
-//user login
+
 
         homePage.logInUser();
     }
 
-    @Test
+   @Test
     public void verifyRegisteredUserShouldReferAProduct() {
+
         homePage.logInUser(); //log in from login details previously used
         referAFriend.referAProductComputer(); //Camera-photo product referral in this case.
-        emailAFriend(); //emailing a friend
-
+     //   emailAFriend(); //emailing a friend
+      //  EmailAFriend.referFriend();
+            emailAFriend.referFriend();
     }
 
     @Test
@@ -53,8 +55,10 @@ public class TestSuite extends BaseTest {
         buildYourOwnSelection.computerAdding();
         // adding selected product to cart.
         addToCart();
+
         //verifying same product in shopping cart.
         shoppingCart();
+
 
     }
 

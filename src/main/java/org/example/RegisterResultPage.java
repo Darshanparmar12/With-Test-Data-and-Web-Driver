@@ -1,19 +1,20 @@
 package org.example;
 
 
-import org.junit.Assert;
 import org.openqa.selenium.By;
+import org.testng.Assert;
 
 public class RegisterResultPage extends Utils {
+    LoadProp loadProp = new LoadProp();
 
     // adding assert point for comparison between actual and expected
-    String expectedRegisterSuccessMessage = "Your registration completed";
+//    String expectedRegisterSuccessMessage = "Your registration completed";
 
 
     public void verifyUserRegisteredSuccessfully() {
 
         //waitUntilElementIsVisible(5);
 
-        Assert.assertEquals(getTextFromElement(By.xpath("//div[@class='result']")), expectedRegisterSuccessMessage);
+        Assert.assertEquals(getTextFromElement(By.xpath("//div[@class='result']")), loadProp.getProperty("expectedRegisterSuccessMessage"));
     }
 }

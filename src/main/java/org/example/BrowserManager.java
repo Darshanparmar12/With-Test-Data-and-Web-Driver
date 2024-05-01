@@ -1,19 +1,44 @@
 package org.example;
 
-import org.openqa.selenium.chrome.ChromeDriver;
 
+import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import java.util.concurrent.TimeUnit;
 
 public class BrowserManager extends Utils {
 
+    //to call loadprop class method we need to create object
+    LoadProp loadProp = new LoadProp();
+
+    //giving preferred browser name
+    String browser = "chrome";
+
     //keep anything related to browser here
     public void openBrowser() {
+        if (browser.equalsIgnoreCase("Chrome"))
+        {
+            System.out.println("Your browser is Chrome");
+            driver = new ChromeDriver();
+        }else if (browser.equalsIgnoreCase("Firefox"))
+        {
+            System.out.println("Your browser is Firefox");
+            driver = new FirefoxDriver();
+        } else if (browser.equalsIgnoreCase("edge"))
+        {
+            System.out.println("Your browser is edge");
+            driver = new EdgeDriver();
 
-        driver = new ChromeDriver();
+        }else {
+            System.out.println("Your browser name is wrong:" + browser);
+        }
+
+
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
         driver.manage().window().maximize();
 
-        driver.get("https://demo.nopcommerce.com/");
+ //       driver.get("https://demo.nopcommerce.com/");
+        driver.get(loadProp.getProperty("url"));
     }
 
     public void closeBrowser() {
